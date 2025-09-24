@@ -1,11 +1,20 @@
+/* ===== CYBER THEME GLOBAL CSS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Share+Tech+Mono&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --color-bg: #1e1b2e;
+  --color-bg-alt: #2d2d3a;
+  --color-text: #f5f5f5;
+  --color-accent: #00f9ff;
+  --color-highlight: #a259ff;
+
+  font-family: 'Share Tech Mono', monospace;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: dark;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,56 +22,94 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* === GLOBAL ELEMENTS === */
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+a {
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-highlight);
+}
+
+/* === HEADINGS === */
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+  margin: 0.5em 0;
+  line-height: 1.2;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 3em;
+  color: var(--color-accent);
 }
 
+h2 {
+  font-size: 2em;
+  color: var(--color-highlight);
+}
+
+/* === BUTTONS === */
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid var(--color-highlight);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all 0.3s ease;
 }
 
+button:hover {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto var(--color-accent);
+}
+
+/* === DARK/LIGHT MEDIA QUERY === */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --color-bg: #ffffff;
+    --color-bg-alt: #f0f0f0;
+    --color-text: #213547;
+    --color-accent: #646cff;
+    --color-highlight: #747bff;
   }
-  a:hover {
-    color: #747bff;
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
   }
+
   button {
-    background-color: #f9f9f9;
+    background-color: var(--color-bg-alt);
+    color: var(--color-text);
+  }
+
+  a {
+    color: var(--color-accent);
+  }
+
+  a:hover {
+    color: var(--color-highlight);
   }
 }
