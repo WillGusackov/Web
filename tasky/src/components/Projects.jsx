@@ -6,9 +6,9 @@ function Projects() {
     <section className="card">
       <h2 className="title">Projects</h2>
       <ul>
-        <li><strong>SecureAuth:</strong> A multi-factor authentication app using Node.js and WebAuthn.</li>
-        <li><strong>PortSniper:</strong> A fast port scanner written in Rust.</li>
-        <li><strong>PhishGuard:</strong> An email phishing detection engine with ML.</li>
+        <a href="/Overflows_c.pdf" target='_blank' rel="" className="project-link"><li><strong>Buffer Overflows:</strong> 90% </li></a>
+        <a href="/Security_breaches.pdf" target='_blank' rel="" className="project-link"><li><strong>Software Vulnerability Breaches :</strong> 85% </li></a>
+        <a href="/Threat_modeling.pdf" target='_blank' rel="" className="project-link"><li><strong>Threat Modelling for Secure Software Engineering:</strong> 85%</li></a>
       </ul>
     </section>
   );
