@@ -1,11 +1,8 @@
-name: Deploy static content to Pages
+name: Deploy Vite App to GitHub Pages
 
 on:
-  # Runs on pushes to the main branch
   push:
     branches: ["main"]
-
-  # Allows manual trigger
   workflow_dispatch:
 
 permissions:
@@ -18,24 +15,35 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-      - name: Upload artifact (tasky site)
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build with Vite
+        run: npm run build
+
+      - name: Upload build output
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './tasky'  # Local folder path with your static site content
+          path: ./dist
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
+        id: deploy
         uses: actions/deploy-pages@v4
