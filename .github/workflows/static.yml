@@ -27,15 +27,19 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd tasky
+          npm install
 
       - name: Build with Vite
-        run: npm run build
+        run: |
+          cd tasky
+          npm run build
 
-      - name: Upload build output
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: tasky/dist
 
   deploy:
     needs: build
