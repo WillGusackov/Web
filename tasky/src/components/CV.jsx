@@ -10,7 +10,7 @@ function CV() {
     <section className="card">
       <h2 className="title">CV</h2>
       <p>
-       <a href="https://willgusackov.github.io/Web/CV.pdf" target="_blank" rel="noopener noreferrer">
+       <a href="/CV.pdf" target="_blank" rel="noopener noreferrer">
   View My CV (PDF)
 </a>
       </p>
